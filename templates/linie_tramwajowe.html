@@ -1,0 +1,23 @@
+{% include  "head.html" %}	
+
+<body> 
+<div data-role="page" id="linia" data-theme="{{data_theme}}">
+	<div data-role="header" data-theme="{{data_theme}}">
+		<h1>trasy</h1>
+	</div>	
+	
+	<div data-role="content" data-theme="{{data_theme}}">	
+	{% for trasa in trasy %}
+		<a href="{{ baseurl }}/prezentacja-trasy-{{ przystanek }}-{{trasa.id}}" 
+			data-role="button" data-theme="{{data_theme}}" class="line_number">
+			{{trasa.numer_trasy}} -> {{trasa.przystanek.all.0 }}
+		</a>
+	{% endfor %}	
+	</div>	
+	<div data-role="footer" class="ui-bar" data-theme="{{data_theme}}" >
+		<a href="{{ baseurl }}/" data-role="button" data-icon="arrow-l" data-theme="b">Przystanki</a>
+	</div>
+</div>
+
+</body>
+</html>

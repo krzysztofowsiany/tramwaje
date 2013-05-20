@@ -1,0 +1,28 @@
+{% include  "head.html" %}	
+
+<body> 
+	<div data-role="page" id="tramwaje" data-theme="{{data_theme}}">
+		<div data-role="header" data-theme="{{data_theme}}">
+			<h1>
+				POZNAŃ
+				<br/>
+				przystanki
+			</h1>		
+		</div>
+
+		<div data-role="content" data-theme="{{data_theme}}">	
+			{% for przystanek in przystanki %}
+				<a href="{{ baseurl }}/linie-tramwajowe-{{ przystanek.id }}"  
+					data-role="button" data-theme="{{data_theme}}"  class="przystanek">
+					{{przystanek.ulica}}
+				</a>
+			{% endfor %}
+		</div>
+		<div data-role="footer" class="ui-bar" data-theme="{{data_theme}}">
+		FREE
+		</div>
+	</div>
+
+</body>
+</html>
+

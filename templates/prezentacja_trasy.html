@@ -1,0 +1,24 @@
+{% include  "head.html" %}	
+
+<body> 
+
+<div data-role="page" id="pt" data-theme="{{data_theme}}">
+	<div data-role="header" data-theme="{{data_theme}}">
+		<h1>{{ przystanek.ulica }} ({{ trasa.numer_trasy }})</h1>
+	</div>
+	kierunek: <b>{{ kierunek }}</b>
+	
+	<div data-role="content" data-theme="{{data_theme}}" class="div_prez" >	
+		<div id="prezentacja">
+		</div>		
+	</div>
+	<script>
+		var d = new Data();
+		d.loadLine({{ trasa.numer_trasy }}, {{ trasa.id }}, {{ przystanek.id }});
+	</script>
+	<div data-role="footer" class="ui-bar" data-theme="{{data_theme}}" >
+		<a href="{{ baseurl }}/linie-tramwajowe-{{ przystanek.id }}" data-role="button" data-icon="arrow-l" data-theme="b">Wybór linii</a>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+
+ .big { 
+	height: 80px; 
+	
+ }
+ 
+.big  { 
+	padding-top:25px; 
+}
+	 
+.ui-bar .ui-btn-inner {
+	height:0.9em;		
+	text-align:center;
+	padding-top:0.25em; 
+	font-size:1.8em;	
+}	 
+.line_number .ui-btn-inner {
+	height:1.0em;		
+	text-align:center;
+	padding-top:0.5em; 
+	
+	font-size:1.5em;	
+}	 
+
+.przystanek .ui-btn-inner  {
+	height:1.0m;		
+	text-align:center;
+	padding-top:0.5em; 
+	
+	font-size:1.5em;	
+}	 
+
+.div_prez
+{
+	padding:5px;
+}
+
+#prezentacja{
+	
+}
+
