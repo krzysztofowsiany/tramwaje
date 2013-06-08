@@ -38,6 +38,8 @@ function Engine() {
 		return fd;
 	}
 
+
+
 	findPos = function () {		
 		var now = new Date().getTime();
 		var thh = time_height_half*1000;
@@ -94,11 +96,50 @@ function Engine() {
 		layer.add(desc);
 	}
 	
+	initCurrTime= function () {
+		curr_time = new Kinetic.Text({
+			x: 100,
+			y:height / 2 -10,
+			text: "",
+			fontSize: 24,
+			fontFamily: 'Arial',
+			fill: 'black',
+			align:'center',
+			width:150
+		});	
+		layer.add(curr_time);
+	}
+	
 	setText = function (t) {
 		desc.setText(t);
 	}
 	
+	setTime = function (t) {
+		curr_time.setText(t.getHours()+":" +t.getMinutes()+":" +t.getSeconds());
+	}
 	
+	
+	initArrow = function () {		
+		var triangle = new Kinetic.Shape({
+        drawFunc: function(canvas) {
+          var context = canvas.getContext();
+          context.beginPath();
+          context.moveTo(120, height /2 - 20);
+          context.lineTo(width, height /2 - 20);
+          context.lineTo(width, height /2 + 20);
+          context.lineTo(120, height /2 + 20);
+          context.lineTo(100, height /2 );
+       
+          context.closePath();
+          canvas.fillStroke(this);
+        },
+        fill: 'white',
+        stroke: 'black',
+        strokeWidth: 0
+      });
+      
+      layer.add(triangle);
+	}
 	
 	initBackground = function (){
 		var rect = new Kinetic.Rect({
@@ -150,6 +191,9 @@ function Engine() {
                     stroke: 'rgb(210,210,210)'
                 });
 		layer.add(line2);
+		
+		initArrow();
+		
 	}
 	
 	
@@ -166,7 +210,7 @@ function Engine() {
 			container: id,
 			width: width,
 			height: height
-      });
+		});
 		
 		layer = new Kinetic.Layer();		
 		
@@ -175,6 +219,7 @@ function Engine() {
 		initBackground();
 		initTramwaj(ln);
 		initDesc();
+		initCurrTime();
 		
 		stage.add(layer);
 
@@ -206,7 +251,8 @@ function Engine() {
 				//frameCount = 0;
 				//console.log(off)
 				currentSecond = second;
-				var tim = new Date().getTime();
+				var curr_date = new Date();
+				var tim = curr_date.getTime();
 				for (var i=0;i<tramwajs.length;i++) {
 					//if (harmonogram.length < i + off) {
 						if (tim<harmonogram[i + off]) {
@@ -222,6 +268,7 @@ function Engine() {
 					//}
 				
 				}	
+				setTime(curr_date);
 			}
 			//frameCount ++;
 		//updateFrameRate(frame.time);
